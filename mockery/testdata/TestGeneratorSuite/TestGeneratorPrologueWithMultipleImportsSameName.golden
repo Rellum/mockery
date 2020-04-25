@@ -1,0 +1,7 @@
+package mocks
+
+import fixtureshttp "github.com/vektra/mockery/mockery/fixtures/http"
+import http "net/http"
+import mock "github.com/stretchr/testify/mock"
+import test "github.com/vektra/mockery/mockery/fixtures"
+
