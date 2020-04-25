@@ -3,6 +3,18 @@ type ConsulLock struct {
 	mock.Mock
 }
 
+// TSetup will assert the mock expectations once the test completes.
+func (_m ConsulLock) TSetup(t mock.TestingT) *ConsulLock {
+	res := &_m
+	if t, ok := t.(interface {
+		mock.TestingT
+		Cleanup(func())
+	}); ok {
+		t.Cleanup(func() { res.AssertExpectations(t) })
+	}
+	return res
+}
+
 // Lock provides a mock function with given fields: _a0
 func (_m *ConsulLock) Lock(_a0 <-chan struct{}) (<-chan struct{}, error) {
 	ret := _m.Called(_a0)

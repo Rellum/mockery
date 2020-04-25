@@ -3,6 +3,18 @@ type RequesterArgSameAsImport struct {
 	mock.Mock
 }
 
+// TSetup will assert the mock expectations once the test completes.
+func (_m RequesterArgSameAsImport) TSetup(t mock.TestingT) *RequesterArgSameAsImport {
+	res := &_m
+	if t, ok := t.(interface {
+		mock.TestingT
+		Cleanup(func())
+	}); ok {
+		t.Cleanup(func() { res.AssertExpectations(t) })
+	}
+	return res
+}
+
 // Get provides a mock function with given fields: _a0
 func (_m *RequesterArgSameAsImport) Get(_a0 string) *json.RawMessage {
 	ret := _m.Called(_a0)

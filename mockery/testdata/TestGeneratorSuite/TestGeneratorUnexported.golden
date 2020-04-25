@@ -3,6 +3,18 @@ type mockRequester_unexported struct {
 	mock.Mock
 }
 
+// TSetup will assert the mock expectations once the test completes.
+func (_m mockRequester_unexported) TSetup(t mock.TestingT) *mockRequester_unexported {
+	res := &_m
+	if t, ok := t.(interface {
+		mock.TestingT
+		Cleanup(func())
+	}); ok {
+		t.Cleanup(func() { res.AssertExpectations(t) })
+	}
+	return res
+}
+
 // Get provides a mock function with given fields:
 func (_m *mockRequester_unexported) Get() {
 	_m.Called()

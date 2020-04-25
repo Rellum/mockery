@@ -3,6 +3,18 @@ type Example struct {
 	mock.Mock
 }
 
+// TSetup will assert the mock expectations once the test completes.
+func (_m Example) TSetup(t mock.TestingT) *Example {
+	res := &_m
+	if t, ok := t.(interface {
+		mock.TestingT
+		Cleanup(func())
+	}); ok {
+		t.Cleanup(func() { res.AssertExpectations(t) })
+	}
+	return res
+}
+
 // A provides a mock function with given fields:
 func (_m *Example) A() http.Flusher {
 	ret := _m.Called()

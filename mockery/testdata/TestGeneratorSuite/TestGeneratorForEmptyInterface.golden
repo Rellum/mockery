@@ -3,6 +3,18 @@ type Blank struct {
 	mock.Mock
 }
 
+// TSetup will assert the mock expectations once the test completes.
+func (_m Blank) TSetup(t mock.TestingT) *Blank {
+	res := &_m
+	if t, ok := t.(interface {
+		mock.TestingT
+		Cleanup(func())
+	}); ok {
+		t.Cleanup(func() { res.AssertExpectations(t) })
+	}
+	return res
+}
+
 // Create provides a mock function with given fields: x
 func (_m *Blank) Create(x interface{}) error {
 	ret := _m.Called(x)

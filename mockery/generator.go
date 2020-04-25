@@ -491,6 +491,16 @@ func (g *Generator) Generate() error {
 		"type %s struct {\n\tmock.Mock\n}\n\n", g.mockName(),
 	)
 
+	g.printf(
+		"// TSetup will assert the mock expectations once the test completes.\n",
+	)
+
+	g.printf(
+		"func (_m %s) TSetup(t mock.TestingT) *%s {\n\tres := &_m\n\tif t, ok := t.(interface {\n\t\tmock.TestingT\n\t\tCleanup(func())\n\t}); ok {\n\t\tt.Cleanup(func() { res.AssertExpectations(t) })\n\t}\n\treturn res\n}\n\n",
+		g.mockName(),
+		g.mockName(),
+	)
+
 	for i := 0; i < g.iface.Type.NumMethods(); i++ {
 		fn := g.iface.Type.Method(i)
 

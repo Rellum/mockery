@@ -3,6 +3,18 @@ type MyReader struct {
 	mock.Mock
 }
 
+// TSetup will assert the mock expectations once the test completes.
+func (_m MyReader) TSetup(t mock.TestingT) *MyReader {
+	res := &_m
+	if t, ok := t.(interface {
+		mock.TestingT
+		Cleanup(func())
+	}); ok {
+		t.Cleanup(func() { res.AssertExpectations(t) })
+	}
+	return res
+}
+
 // Read provides a mock function with given fields: p
 func (_m *MyReader) Read(p []byte) (int, error) {
 	ret := _m.Called(p)

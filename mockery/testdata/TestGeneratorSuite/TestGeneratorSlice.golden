@@ -3,6 +3,18 @@ type RequesterSlice struct {
 	mock.Mock
 }
 
+// TSetup will assert the mock expectations once the test completes.
+func (_m RequesterSlice) TSetup(t mock.TestingT) *RequesterSlice {
+	res := &_m
+	if t, ok := t.(interface {
+		mock.TestingT
+		Cleanup(func())
+	}); ok {
+		t.Cleanup(func() { res.AssertExpectations(t) })
+	}
+	return res
+}
+
 // Get provides a mock function with given fields: path
 func (_m *RequesterSlice) Get(path string) ([]string, error) {
 	ret := _m.Called(path)

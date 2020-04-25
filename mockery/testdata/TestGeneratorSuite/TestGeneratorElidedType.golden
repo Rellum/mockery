@@ -3,6 +3,18 @@ type RequesterElided struct {
 	mock.Mock
 }
 
+// TSetup will assert the mock expectations once the test completes.
+func (_m RequesterElided) TSetup(t mock.TestingT) *RequesterElided {
+	res := &_m
+	if t, ok := t.(interface {
+		mock.TestingT
+		Cleanup(func())
+	}); ok {
+		t.Cleanup(func() { res.AssertExpectations(t) })
+	}
+	return res
+}
+
 // Get provides a mock function with given fields: path, url
 func (_m *RequesterElided) Get(path string, url string) error {
 	ret := _m.Called(path, url)

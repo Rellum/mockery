@@ -12,6 +12,7 @@ import (
 	"github.com/stretchr/testify/suite"
 )
 
+//go:generate rm -rf ./testdata/TestGeneratorSuite
 //go:generate go test github.com/Rellum/mockery/mockery -run TestGeneratorSuite -update
 
 const pkg = "test"

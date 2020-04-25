@@ -3,6 +3,18 @@ type Fooer struct {
 	mock.Mock
 }
 
+// TSetup will assert the mock expectations once the test completes.
+func (_m Fooer) TSetup(t mock.TestingT) *Fooer {
+	res := &_m
+	if t, ok := t.(interface {
+		mock.TestingT
+		Cleanup(func())
+	}); ok {
+		t.Cleanup(func() { res.AssertExpectations(t) })
+	}
+	return res
+}
+
 // Bar provides a mock function with given fields: f
 func (_m *Fooer) Bar(f func([]int)) {
 	_m.Called(f)
