@@ -12,7 +12,7 @@ import (
 	"github.com/stretchr/testify/suite"
 )
 
-//go:generate go test github.com/vektra/mockery/mockery -run TestGeneratorSuite -update
+//go:generate go test github.com/Rellum/mockery/mockery -run TestGeneratorSuite -update
 
 const pkg = "test"
 
@@ -233,7 +233,7 @@ func (s *GeneratorSuite) TestGeneratorWithImportSameAsLocalPackageInpkgNoCycle()
 	pkg := iface.QualifiedName
 	gen := NewGenerator(iface, pkg, true)
 	gen.GeneratePrologue(pkg)
-	s.NotContains(gen.buf.String(), `import test "github.com/vektra/mockery/mockery/fixtures/test"`)
+	s.NotContains(gen.buf.String(), `import test "github.com/Rellum/mockery/mockery/fixtures/test"`)
 }
 
 func (s *GeneratorSuite) TestGeneratorWithImportSameAsLocalPackage() {

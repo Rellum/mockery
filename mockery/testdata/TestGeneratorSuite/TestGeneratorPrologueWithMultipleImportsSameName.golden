@@ -1,7 +1,7 @@
 package mocks
 
-import fixtureshttp "github.com/vektra/mockery/mockery/fixtures/http"
+import fixtureshttp "github.com/Rellum/mockery/mockery/fixtures/http"
 import http "net/http"
 import mock "github.com/stretchr/testify/mock"
-import test "github.com/vektra/mockery/mockery/fixtures"
+import test "github.com/Rellum/mockery/mockery/fixtures"
 

@@ -1,6 +1,6 @@
 package mocks
 
-import fixtures "github.com/vektra/mockery/mockery/fixtures"
+import fixtures "github.com/Rellum/mockery/mockery/fixtures"
 import mock "github.com/stretchr/testify/mock"
-import test "github.com/vektra/mockery/mockery/fixtures/test"
+import test "github.com/Rellum/mockery/mockery/fixtures/test"
 

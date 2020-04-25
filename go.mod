@@ -1,4 +1,4 @@
-module github.com/vektra/mockery
+module github.com/Rellum/mockery
 
 go 1.14
 
