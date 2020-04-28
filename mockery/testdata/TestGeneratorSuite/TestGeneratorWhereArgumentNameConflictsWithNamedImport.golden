@@ -4,15 +4,15 @@ type RequesterArgSameAsNamedImport struct {
 }
 
 // TSetup will assert the mock expectations once the test completes.
-func (_m RequesterArgSameAsNamedImport) TSetup(t mock.TestingT) *RequesterArgSameAsNamedImport {
-	res := &_m
+func (_m *RequesterArgSameAsNamedImport) TSetup(t mock.TestingT, expectedCalls ...*mock.Call) *RequesterArgSameAsNamedImport {
+	_m.ExpectedCalls = append(_m.ExpectedCalls, expectedCalls...)
 	if t, ok := t.(interface {
 		mock.TestingT
 		Cleanup(func())
 	}); ok {
-		t.Cleanup(func() { res.AssertExpectations(t) })
+		t.Cleanup(func() { _m.AssertExpectations(t) })
 	}
-	return res
+	return _m
 }
 
 // Get provides a mock function with given fields: _a0
